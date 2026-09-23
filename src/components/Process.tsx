@@ -5,9 +5,9 @@ export function Process() {
   return (
     <Section
       id="process"
-      eyebrow="Process"
-      title="From unclear problem to intelligent product."
-      intro="A clear operating flow keeps AI work grounded in product value, implementation reality, and usable interfaces."
+      eyebrow="How I work"
+      title="From ambiguity to working software."
+      intro="I try to make each engineering step observable: understand the problem, model the system, build a small path, test the important behavior, then refine."
     >
       <ol className="process-flow">
         {process.map((step, index) => (

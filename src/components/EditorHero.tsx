@@ -21,7 +21,7 @@ function FloatingName() {
         const x = (index - letters.length / 2) * 0.36;
         const isSpace = letter === ' ';
         return (
-          <mesh key={`${letter}-${index}`} position={[x, Math.sin(index) * 0.06, 0]}>
+          <mesh key={letter + '-' + index} position={[x, Math.sin(index) * 0.06, 0]}>
             <boxGeometry args={[isSpace ? 0.08 : 0.24, 0.62, 0.08]} />
             <meshStandardMaterial
               color={isSpace ? '#11151b' : '#dce7f2'}
@@ -55,26 +55,26 @@ export function EditorHero() {
   return (
     <section id="home" className="hero-shell" aria-labelledby="home-title">
       <div className="hero-copy">
-        <p className="system-pill">AI systems / software products / product-grade interfaces</p>
+        <p className="system-pill">Mathematics → software systems → applied AI</p>
         <h1 id="home-title">{profile.name}</h1>
         <p className="hero-role">{profile.role}</p>
         <p className="hero-summary">{profile.summary}</p>
         <div className="hero-actions">
           <a className="primary-action" href="#projects">
-            View work <ChevronRight size={18} />
+            View selected work <ChevronRight size={18} />
           </a>
           <a className="secondary-action" href="#contact">
-            Connect system
+            Contact me
           </a>
         </div>
       </div>
 
-      <div className="editor-stage" aria-label="Code editor hero assembling Dareen Esleem">
+      <div className="editor-stage" aria-label="Code editor hero representing Dareen Esleem">
         <div className="editor-chrome">
           <span />
           <span />
           <span />
-          <p>dareen-os/hero.ts</p>
+          <p>dareen-os/engineer.ts</p>
         </div>
         <div className="editor-grid">
           <pre className={reducedMotion ? 'code-panel reduce-motion' : 'code-panel'}>

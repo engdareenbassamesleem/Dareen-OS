@@ -1,11 +1,11 @@
-import { Download, Github, Menu, X } from 'lucide-react';
+import { Github, Mail, Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import { profile } from '../content/portfolio';
 
 const links = [
   { href: '#home', label: 'Home' },
   { href: '#about', label: 'About' },
-  { href: '#services', label: 'Services' },
+  { href: '#services', label: 'Capabilities' },
   { href: '#projects', label: 'Projects' },
   { href: '#process', label: 'Process' },
   { href: '#contact', label: 'Contact' },
@@ -37,12 +37,18 @@ export function Nav() {
             {link.label}
           </a>
         ))}
-        <a className="icon-link" href={profile.github} aria-label="GitHub profile">
+        <a
+          className="icon-link"
+          href={profile.github}
+          target="_blank"
+          rel="noreferrer"
+          aria-label="GitHub profile"
+        >
           <Github size={18} />
         </a>
-        <a className="nav-cta" href={profile.cv}>
-          <Download size={16} />
-          CV
+        <a className="nav-cta" href={'mailto:' + profile.email}>
+          <Mail size={16} />
+          Get in touch
         </a>
       </nav>
     </header>

@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, Send, SquareArrowOutUpRight } from 'lucide-react';
+import { Github, Linkedin, Mail, SquareArrowOutUpRight } from 'lucide-react';
 import { contactFields, profile } from '../content/portfolio';
 import { Section } from './Section';
 
@@ -7,40 +7,30 @@ export function Contact() {
     <Section
       id="contact"
       eyebrow="Contact"
-      title="Open a system connection."
-      intro="Use this interface as the editable contact layer for the portfolio. Replace placeholders as your final links become available."
+      title="Open to software engineering, applied AI, and automation opportunities."
+      intro="For internships, junior roles, technical collaborations, or a project conversation, email is the fastest way to reach me. You can also inspect my work directly on GitHub."
     >
       <div className="contact-layout">
-        <form className="contact-form" aria-label="Contact form">
-          <label>
-            Name
-            <input type="text" name="name" placeholder="Your name" autoComplete="name" />
-          </label>
-          <label>
-            Email
-            <input type="email" name="email" placeholder="you@example.com" autoComplete="email" />
-          </label>
-          <label>
-            Project signal
-            <select name="topic" defaultValue="AI product">
-              <option>AI product</option>
-              <option>Automation</option>
-              <option>Web application</option>
-              <option>Mobile / Flutter</option>
-              <option>UI/UX system</option>
-            </select>
-          </label>
-          <label>
-            Message
-            <textarea name="message" placeholder="Tell me what you want to build." rows={5} />
-          </label>
-          <button type="button">
-            <Send size={17} />
-            Prepare message
-          </button>
-        </form>
+        <div className="contact-form">
+          <p className="system-pill">Available for relevant opportunities</p>
+          <h3>Want to talk about a role or a technical problem?</h3>
+          <p className="project-description">
+            I am particularly interested in teams working on real software products, backend systems,
+            applied AI, automation, and multidisciplinary technical problems.
+          </p>
+          <div className="hero-actions">
+            <a className="primary-action" href={'mailto:' + profile.email}>
+              <Mail size={17} />
+              Email me
+            </a>
+            <a className="secondary-action" href={profile.github} target="_blank" rel="noreferrer">
+              <Github size={17} />
+              View GitHub
+            </a>
+          </div>
+        </div>
 
-        <aside className="connection-panel" aria-label="Editable contact placeholders">
+        <aside className="connection-panel" aria-label="Contact links">
           <div className="panel-header">
             <Mail size={20} />
             <span>Connection endpoints</span>
@@ -48,22 +38,24 @@ export function Contact() {
           {contactFields.map((field) => (
             <div className="endpoint-row" key={field.label}>
               <span>{field.label}</span>
-              <a href={field.value}>{field.value}</a>
+              <a href={field.href} target={field.href.startsWith('http') ? '_blank' : undefined} rel="noreferrer">
+                {field.value}
+              </a>
               <small>{field.helper}</small>
             </div>
           ))}
           <div className="social-actions">
-            <a href={profile.linkedin}>
+            <a href={profile.linkedin} target="_blank" rel="noreferrer">
               <Linkedin size={17} />
               LinkedIn
             </a>
-            <a href={profile.github}>
+            <a href={profile.github} target="_blank" rel="noreferrer">
               <Github size={17} />
               GitHub
             </a>
-            <a href={profile.cv}>
+            <a href={'mailto:' + profile.email}>
               <SquareArrowOutUpRight size={17} />
-              CV
+              Email
             </a>
           </div>
         </aside>

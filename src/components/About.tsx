@@ -7,21 +7,34 @@ export function About() {
     <Section
       id="about"
       eyebrow="About"
-      title="Engineering with taste, clarity, and useful intelligence."
-      intro="I build at the intersection of AI, product design, and software engineering, with a bias for systems that are understandable, editable, and genuinely helpful."
+      title="Mathematics-trained, software-focused, and comfortable with hard problems."
+      intro="My background in mathematics shapes how I break down ambiguity, reason about systems, and test assumptions. I now apply that mindset to backend engineering, applied AI, automation, and product interfaces."
     >
       <div className="about-layout">
         <div className="about-story">
           <p>
-            Dareen OS is the portfolio layer for my work: a focused environment where ideas become
-            workflows, interfaces, and AI-assisted products. My approach starts with the problem, then
-            shapes the data, interaction model, and technical system around it.
+            I studied Mathematics at the Islamic University of Gaza and build portfolio projects that
+            can be inspected through their code, tests, architecture, and documented limitations. I am
+            especially interested in software engineering roles where analytical thinking and practical
+            product development meet.
           </p>
           <div className="principles-grid">
             {[
-              { icon: Cpu, title: 'Systems first', body: 'I connect logic, data, and experience before polishing the surface.' },
-              { icon: Orbit, title: 'Calm intelligence', body: 'AI should reduce ambiguity, not add theatrics or hidden complexity.' },
-              { icon: ShieldCheck, title: 'Practical craft', body: 'Accessible interfaces, honest scope, maintainable code, and clear tradeoffs.' },
+              {
+                icon: Cpu,
+                title: 'First principles',
+                body: 'I reduce a problem to inputs, constraints, invariants, and observable behavior before choosing a solution.',
+              },
+              {
+                icon: Orbit,
+                title: 'System thinking',
+                body: 'I care about data flow, interfaces, failure states, and how individual components behave together.',
+              },
+              {
+                icon: ShieldCheck,
+                title: 'Evidence over claims',
+                body: 'I prefer reproducible demos, tests, source links, and explicit limitations over invented metrics or vague promises.',
+              },
             ].map((item) => (
               <article key={item.title} className="principle-card">
                 <item.icon size={22} />
@@ -31,7 +44,7 @@ export function About() {
             ))}
           </div>
         </div>
-        <div className="data-orbit" aria-label="AI and data inspired visual">
+        <div className="data-orbit" aria-label="Technical profile summary">
           {designSignals.map((signal) => (
             <div key={signal.label} className="signal-row">
               <span>{signal.label}</span>

@@ -6,9 +6,9 @@ export function Projects() {
   return (
     <Section
       id="projects"
-      eyebrow="Projects"
-      title="Case studies shaped like product dashboards."
-      intro="These cards are honest snapshots of product directions and prototypes, without invented metrics, clients, or traction claims."
+      eyebrow="Selected work"
+      title="Projects with code you can inspect."
+      intro="The projects below are portfolio and learning builds. Their repositories document setup, current behavior, tests, and limitations so the technical evidence stays easy to verify."
     >
       <div className="project-grid">
         {projects.map((project) => (
@@ -42,8 +42,14 @@ export function Projects() {
                 <span key={item}>{item}</span>
               ))}
             </div>
-            <a href="#contact" className="project-link">
-              Discuss similar work <ArrowUpRight size={16} />
+            <a
+              href={project.href}
+              className="project-link"
+              target="_blank"
+              rel="noreferrer"
+              aria-label={'View ' + project.title + ' repository on GitHub'}
+            >
+              View repository <ArrowUpRight size={16} />
             </a>
           </article>
         ))}
