@@ -14,13 +14,14 @@ try {
   const context = await browser.newContext({ viewport: { width: 1440, height: 1040 }, deviceScaleFactor: 1 });
   await context.grantPermissions(['clipboard-read', 'clipboard-write']);
   const page = await context.newPage();
-  page.on('pageerror', error => errors.push(error.message));
+  page.on('pageerror', error => { errors.push(error.message); console.log('PAGE ERROR:', error.message); });
+  page.on('console', message => { if (message.type() === 'error') console.log('BROWSER:', message.text()); });
   const response = await page.goto('http://127.0.0.1:4173/Dareen-OS/', { waitUntil: 'networkidle' });
   assert.equal(response.status(), 200);
   await page.locator('canvas').waitFor();
   await page.evaluate(() => document.fonts.ready);
   assert.ok(await page.locator('canvas').evaluate(canvas => Boolean(canvas.getContext('webgl2'))));
-  assert.equal(await page.locator('.scene-fallback').count(), 0);
+  await page.locator('.scene-fallback').waitFor({ state: 'hidden' });
   assert.equal(await page.locator('html').getAttribute('dir'), 'rtl');
   assert.equal(await page.locator('.project-card').count(), 4);
   await page.screenshot({ path: new URL('dareen-ar-desktop.png', output).pathname.replace(/^\/(\w:)/, '$1'), fullPage: true });
