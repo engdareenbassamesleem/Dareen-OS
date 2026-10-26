@@ -8,6 +8,7 @@ dist/
 build/
 .vite/
 coverage/
+playwright-artifacts/
 *.tsbuildinfo
 
 # Environment and secrets

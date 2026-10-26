@@ -18,6 +18,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -36,6 +37,20 @@ jobs:
 
       - name: Lint
         run: npm run lint
+
+      - name: Install test browser
+        run: npx playwright install --with-deps chromium
+
+      - name: Check portfolio in browser
+        run: node .github/scripts/browser-check.mjs
+
+      - name: Upload browser previews
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: portfolio-previews
+          path: playwright-artifacts
+          if-no-files-found: ignore
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

@@ -44,6 +44,10 @@ npm run lint
 npm run build
 ```
 
+## Browser verification
+
+After building, run `npx playwright install chromium` and `node .github/scripts/browser-check.mjs`. This starts and closes a local preview automatically. It checks Arabic/English navigation, the WebGL canvas and scene controls, project filtering and dialogs, clipboard behavior, mobile widths, reduced motion, and the WebGL fallback. Screenshots and the report are written to the ignored `playwright-artifacts/` directory. GitHub Actions runs the same checks and attaches the images as `portfolio-previews` before deployment.
+
 ## Deployment
 
 The repository contains a GitHub Actions workflow for GitHub Pages and uses the Vite base path `/Dareen-OS/`.
