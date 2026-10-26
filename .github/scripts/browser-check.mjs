@@ -40,7 +40,7 @@ try {
   await page.getByRole('dialog').waitFor({ state: 'visible' });
   assert.equal(await page.getByRole('dialog').getByRole('link').getAttribute('href'), 'https://github.com/engdareenbassamesleem/ragsource');
   await page.keyboard.press('Escape');
-  assert.equal(await page.locator('dialog').count(), 0);
+  await page.locator('dialog').waitFor({ state: 'detached' });
   await page.getByRole('button', { name: 'كل المشاريع' }).click();
   results.push('Project filters, native modal, real source link, Escape to close');
 
