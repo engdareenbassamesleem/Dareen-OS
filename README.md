@@ -1,6 +1,6 @@
 # Dareen — AI Engineer
 
-A rebuilt personal portfolio for Dareen Esleem, with an interactive Three.js neural sculpture, Arabic/English content, selected project case studies, and direct contact links. Arabic is the default; the language switch remembers the visitor's preference when local storage is available.
+An English personal portfolio for Dareen Esleem, built around her identity: a custom DE code monogram, her supplied portrait, and an animated TypeScript introduction that types her name and a welcome message. A Three.js neural sculpture, project case studies, and direct contact links complete the experience.
 
 ## Stack
 
@@ -12,17 +12,22 @@ A rebuilt personal portfolio for Dareen Esleem, with an interactive Three.js neu
 
 ## Experience
 
+- An English-only welcome and content, including for returning visitors with the previous Arabic language preference.
+- The custom vector logo is in `public/dareen-logo.svg` and reused in the header, portrait card, footer, and favicon. Its D/E monogram combines code brackets and a connected node.
+- The original portrait is published at `public/dareen-esleem.jpg`. It is displayed with CSS framing, without image retouching.
+- The introduction types once, with pause/resume and replay controls. Reduced-motion visitors immediately see the full text. This is a visual introduction, not executable visitor-supplied code.
+
 - Switch the sculpture between a neural sphere and an orbital field; drag it, rotate with the keyboard-accessible button, or pause animation.
 - Animation starts paused for visitors who prefer reduced motion and stops rendering when the sculpture is offscreen or the tab is hidden.
 - A static orbital illustration replaces the canvas if WebGL is unavailable or its context is lost.
 - Filter projects and open accessible native dialogs with approach, scope, technologies, and source links.
 - Email, GitHub, and LinkedIn use the profile's existing verified contact details. There is no form backend or simulated AI chat.
-- Layout and navigation adapt to small screens and right-to-left Arabic.
+- Layout and navigation adapt to small screens.
 - Fonts are requested from Google Fonts with system fallbacks. There are no remote 3D models or textures.
 
 ## Content
 
-Edit `src/content/site.ts` for the profile, translations, projects, and contact links. Project descriptions and status are carried over from the original repository; they should be kept in sync with the linked source repositories. Project illustrations are stylized diagrams, not screenshots of deployed applications.
+Edit `src/content/site.ts` for the profile, projects, and contact links. `src/components/CodeIntro.tsx` contains the introduction. Project descriptions and status are carried over from the original repository; they should be kept in sync with the linked source repositories. Project illustrations are stylized diagrams, not screenshots of deployed applications.
 
 `src/components/NeuralScene.tsx` owns the procedural sculpture. `src/styles.css` defines the visual system. The heavy 3D module is loaded separately from the main page.
 
@@ -46,7 +51,7 @@ npm run build
 
 ## Browser verification
 
-After building, run `npx playwright install chromium` and `node .github/scripts/browser-check.mjs`. This starts and closes a local preview automatically. It checks Arabic/English navigation, the WebGL canvas and scene controls, project filtering and dialogs, clipboard behavior, mobile widths, reduced motion, and the WebGL fallback. Screenshots and the report are written to the ignored `playwright-artifacts/` directory. GitHub Actions runs the same checks and attaches the images as `portfolio-previews` before deployment.
+After building, run `npx playwright install chromium` and `node .github/scripts/browser-check.mjs`. This starts and closes a local preview automatically. It checks the English-only page, portrait loading, introduction animation and its controls, the WebGL canvas, project filtering and dialogs, clipboard behavior, mobile widths, reduced motion, and the WebGL fallback. Screenshots and the report are written to the ignored `playwright-artifacts/` directory. GitHub Actions runs the same checks and attaches the images as `portfolio-previews` before deployment.
 
 ## Deployment
 
