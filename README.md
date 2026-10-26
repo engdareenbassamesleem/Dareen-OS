@@ -1,6 +1,6 @@
-# Dareen OS
+# Dareen — AI Engineer
 
-Personal portfolio for Dareen Esleem, focused on practical software engineering, applied AI, retrieval, workflow automation, and product interfaces.
+A rebuilt personal portfolio for Dareen Esleem, with an interactive Three.js neural sculpture, Arabic/English content, selected project case studies, and direct contact links. Arabic is the default; the language switch remembers the visitor's preference when local storage is available.
 
 ## Stack
 
@@ -8,8 +8,23 @@ Personal portfolio for Dareen Esleem, focused on practical software engineering,
 - TypeScript
 - Vite
 - Three.js and React Three Fiber
-- Framer Motion
-- Tailwind tooling plus custom CSS
+- Custom responsive CSS and Lucide icons
+
+## Experience
+
+- Switch the sculpture between a neural sphere and an orbital field; drag it, rotate with the keyboard-accessible button, or pause animation.
+- Animation starts paused for visitors who prefer reduced motion and stops rendering when the sculpture is offscreen or the tab is hidden.
+- A static orbital illustration replaces the canvas if WebGL is unavailable or its context is lost.
+- Filter projects and open accessible native dialogs with approach, scope, technologies, and source links.
+- Email, GitHub, and LinkedIn use the profile's existing verified contact details. There is no form backend or simulated AI chat.
+- Layout and navigation adapt to small screens and right-to-left Arabic.
+- Fonts are requested from Google Fonts with system fallbacks. There are no remote 3D models or textures.
+
+## Content
+
+Edit `src/content/site.ts` for the profile, translations, projects, and contact links. Project descriptions and status are carried over from the original repository; they should be kept in sync with the linked source repositories. Project illustrations are stylized diagrams, not screenshots of deployed applications.
+
+`src/components/NeuralScene.tsx` owns the procedural sculpture. `src/styles.css` defines the visual system. The heavy 3D module is loaded separately from the main page.
 
 ## Featured work
 
