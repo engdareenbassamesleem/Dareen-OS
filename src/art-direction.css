@@ -286,3 +286,19 @@ h2{font-size:40px;line-height:1.1;letter-spacing:-1.6px}
 .code-story .code-editor{font-size:9px}
 .contact-section h2{font-size:48px}
 }
+
+/* The homepage introduces Dareen through live-written code. */
+.art-hero .hero-copy{min-width:0}
+.art-hero .hero-code-label{font-family:var(--mono);font-size:14px;color:var(--accent);margin:30px 0 16px}
+.art-hero .code-editor{margin:0 0 25px;font-size:12px;border-radius:4px;border-color:#a6e3cf38;background:#0d1420;box-shadow:0 20px 70px #0003}
+.art-hero .editor-titlebar{background:#131d2b;height:41px}
+.art-hero .editor-code{min-height:265px;padding-block:8px 13px}
+.art-hero .code-line,.art-hero .line-number{line-height:21px;min-height:21px}
+.art-hero .editor-terminal{min-height:72px}
+.art-hero .editor-statusbar{min-height:34px}
+.art-hero .intro-controls button{min-width:30px;min-height:30px}
+.art-hero .hero-design-intro{margin-top:0}
+.art-hero .hero-actions{margin-top:24px}
+.art-hero .art-person{margin-top:24px}
+@media(max-width:1100px){.art-hero .code-editor{font-size:10px}.art-hero .code-line{grid-template-columns:32px minmax(0,1fr);padding-right:9px}.art-hero .line-number{padding-right:10px}}
+@media(max-width:760px){.art-hero .hero-code-label{font-size:13px;margin-top:24px}.art-hero .code-editor{font-size:clamp(9px,2.6vw,12px);margin-bottom:23px}.art-hero .editor-code{min-height:265px}.art-hero .hero-copy{width:100%}.art-hero .editor-breadcrumb{font-size:8px}.art-hero .editor-language{font-size:7px}}

@@ -3,12 +3,12 @@ import { Check, Code2, GitBranch, Pause, Play, RotateCcw, Terminal } from 'lucid
 
 type Token = { text: string; kind?: string };
 const lines: Token[][] = [
-  [{ text: '// A little introduction, written in code.', kind: 'comment' }],
-  [{ text: 'const ', kind: 'keyword' }, { text: 'engineer', kind: 'variable' }, { text: ' = {' }],
+  [{ text: '// Welcome to my creative world.', kind: 'comment' }],
+  [{ text: 'const ', kind: 'keyword' }, { text: 'dareen', kind: 'variable' }, { text: ' = {' }],
   [{ text: '  name', kind: 'property' }, { text: ': ' }, { text: '"Dareen Esleem"', kind: 'string' }, { text: ',' }],
-  [{ text: '  role', kind: 'property' }, { text: ': ' }, { text: '"3D Design + AI"', kind: 'string' }, { text: ',' }],
+  [{ text: '  role', kind: 'property' }, { text: ': ' }, { text: '"3D Design & AI Engineer"', kind: 'string' }, { text: ',' }],
   [{ text: '  foundation', kind: 'property' }, { text: ': ' }, { text: '"Mathematics"', kind: 'string' }, { text: ',' }],
-  [{ text: '  focus', kind: 'property' }, { text: ': [' }, { text: '"AI"', kind: 'string' }, { text: ', ' }, { text: '"Creative experiences"', kind: 'string' }, { text: '],' }],
+  [{ text: '  creating', kind: 'property' }, { text: ': ' }, { text: '"Interactive 3D experiences"', kind: 'string' }, { text: ',' }],
   [{ text: '};' }],
   [],
   [{ text: 'function ', kind: 'keyword' }, { text: 'sayHello', kind: 'function' }, { text: '() {' }],
