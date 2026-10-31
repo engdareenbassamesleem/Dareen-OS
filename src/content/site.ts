@@ -110,23 +110,6 @@ export const copy = {
 };
 export const projects = [
   {
-    "id": "dentivo",
-    "title": "Dentivo AI",
-    "category": "product",
-    "href": "https://github.com/engdareenbassamesleem/dentivo-ai",
-    "stack": [
-      "React",
-      "TypeScript",
-      "Firebase",
-      "Gemini"
-    ],
-    "label": "PRODUCT / AI ASSISTANT",
-    "status": "Application prototype",
-    "description": "A more connected clinic experience. An AI-assisted workflow prototype for patient questions and booking requests.",
-    "approach": "A React interface backed by Firebase services, with a Gemini-powered assistant for patient questions and structured booking-request collection.",
-    "scope": "An application prototype for clinic workflows, not a deployed clinical service. The assistant is not a medical diagnosis tool."
-  },
-  {
     "id": "leadengine",
     "title": "Dareen AI Lead Engine",
     "category": "automation",
@@ -143,6 +126,23 @@ export const projects = [
     "description": "An AI-powered n8n system for capturing, analyzing, qualifying, and scoring incoming leads before triggering an automated business workflow.",
     "approach": "Lead Capture → Data Processing → AI Analysis → Lead Qualification → Lead Scoring → Automated Action. AI analyzes and classifies incoming information, assigns qualification or priority details, and supports the appropriate automated action.",
     "scope": "A personal AI automation project. There is currently no public repository or live demo URL for this project."
+  },
+  {
+    "id": "dentivo",
+    "title": "Dentivo AI",
+    "category": "product",
+    "href": "https://github.com/engdareenbassamesleem/dentivo-ai",
+    "stack": [
+      "React",
+      "TypeScript",
+      "Firebase",
+      "Gemini"
+    ],
+    "label": "PRODUCT / AI ASSISTANT",
+    "status": "Application prototype",
+    "description": "A more connected clinic experience. An AI-assisted workflow prototype for patient questions and booking requests.",
+    "approach": "A React interface backed by Firebase services, with a Gemini-powered assistant for patient questions and structured booking-request collection.",
+    "scope": "An application prototype for clinic workflows, not a deployed clinical service. The assistant is not a medical diagnosis tool."
   },
   {
     "id": "flowmedic",

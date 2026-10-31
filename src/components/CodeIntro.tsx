@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Check, Code2, GitBranch, Pause, Play, RotateCcw, Terminal } from 'lucide-react';
 
 type Token = { text: string; kind?: string };
@@ -23,17 +23,21 @@ export function CodeIntro() {
   const [reduced, setReduced] = useState(() => window.matchMedia('(prefers-reduced-motion: reduce)').matches);
   const [position, setPosition] = useState(() => window.matchMedia('(prefers-reduced-motion: reduce)').matches ? length : 0);
   const [paused, setPaused] = useState(false);
-  const [visible, setVisible] = useState(!document.hidden);
+  const wrapper = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
   const complete = position >= length;
   const playing = !complete && !paused && !reduced && visible;
 
   useEffect(() => {
     const media = window.matchMedia('(prefers-reduced-motion: reduce)');
     const updateMotion = () => { setReduced(media.matches); if (media.matches) setPosition(length); };
-    const updateVisibility = () => setVisible(!document.hidden);
+    let inView = false;
+    const updateVisibility = () => setVisible(inView && !document.hidden);
+    const observer = new IntersectionObserver(([entry]) => { inView = entry.isIntersecting; updateVisibility(); }, { threshold: 0.15 });
+    if (wrapper.current) observer.observe(wrapper.current);
     media.addEventListener('change', updateMotion);
     document.addEventListener('visibilitychange', updateVisibility);
-    return () => { media.removeEventListener('change', updateMotion); document.removeEventListener('visibilitychange', updateVisibility); };
+    return () => { observer.disconnect(); media.removeEventListener('change', updateMotion); document.removeEventListener('visibilitychange', updateVisibility); };
   }, []);
   useEffect(() => {
     if (!playing) return;
@@ -43,7 +47,7 @@ export function CodeIntro() {
 
   function replay() { setPaused(false); setPosition(reduced ? length : 0); }
   let offset = 0;
-  return <div className={`code-editor ${playing ? 'is-typing' : ''}`} data-typing-complete={complete}>
+  return <div ref={wrapper} className={`code-editor ${playing ? 'is-typing' : ''}`} data-typing-complete={complete}>
     <div className="editor-titlebar"><div className="window-dots" aria-hidden="true"><i /><i /><i /></div><span className="editor-file"><Code2 size={14} /><span>dareen.ts</span><span className="editor-modified" aria-hidden="true">●</span></span><span className="editor-language">TypeScript</span></div>
     <div className="editor-breadcrumb" aria-hidden="true">portfolio <span>/</span> src <span>/</span> <strong>dareen.ts</strong></div>
     <pre className="sr-only">{fullCode}</pre>

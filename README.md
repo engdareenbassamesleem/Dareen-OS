@@ -70,3 +70,7 @@ The 3D Lab is labelled **Experimental & Concept Work**. Its procedural form, unb
 Real AI projects are Dentivo AI, FlowMedic AI, and Dareen AI Lead Engine. The latter is an n8n / AI automation project described by Dareen; it has an illustrative six-step Workflow Visualization and an Explore Workflow CTA, with no repository or live-demo link.
 
 The creative toolkit is user supplied: Spline, Three.js, React, JavaScript, HTML5 / CSS3, Figma, and AI-assisted web development tools. The site experiments themselves use Three.js and React.
+
+## Art direction
+
+The open sculptural hero is the visual focal point, supported by Dareen's oversized name. The animated introduction lives in its own section and starts when it becomes visible. Lead Engine is a featured workflow case study, followed by Dentivo and FlowMedic as a pair. The portrait, original project facts, lab labels, accessibility controls, and external-link boundaries are preserved.

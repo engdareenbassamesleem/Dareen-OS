@@ -1,6 +1,6 @@
 import { Component, useEffect, useMemo, useRef, useState, type ReactNode, type MutableRefObject } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { Group } from 'three';
+import { Group, MathUtils } from 'three';
 import { Pause, Play, RotateCw } from 'lucide-react';
 import { SceneFallback } from './SceneFallback';
 
@@ -24,20 +24,22 @@ function Sculpture({ form, finish, wireframe, playing, rotation, scroll }: { for
   useFrame(({ pointer }, delta) => {
     if (!object.current) return;
     if (playing) time.current += Math.min(delta, 0.05);
-    object.current.rotation.set(0.26 + (playing ? pointer.y * 0.15 : 0), rotation + time.current * 0.18 + (playing ? pointer.x * 0.18 + scroll.current * 0.75 : 0), form === 'Product' || form === 'Interface' ? 0.05 : 0.27);
+    const targetX = 0.26 + (playing ? pointer.y * 0.15 : 0);
+    const targetY = rotation + time.current * 0.105 + (playing ? pointer.x * 0.18 + scroll.current * 0.75 : 0);
+    object.current.rotation.set(playing ? MathUtils.damp(object.current.rotation.x, targetX, 4, Math.min(delta, 0.05)) : targetX, playing ? MathUtils.damp(object.current.rotation.y, targetY, 4, Math.min(delta, 0.05)) : targetY, form === 'Product' || form === 'Interface' ? 0.05 : 0.27);
     object.current.position.y = Math.sin(time.current * 0.75) * 0.1;
   });
   return <>
     <ambientLight intensity={0.9} />
-    <directionalLight position={[3, 4, 5]} intensity={4.5} color="#d9fff7" />
-    <directionalLight position={[-4, 1, 2]} intensity={4} color="#9d86ff" />
-    <pointLight position={[0, -3, 3]} intensity={14} color="#4cf2c4" />
+    <directionalLight position={[3, 4, 5]} intensity={3.2} color="#fff3dc" />
+    <directionalLight position={[-4, 1, 2]} intensity={2.8} color="#a697ef" />
+    <pointLight position={[0, -3, 3]} intensity={9} color="#65d9c0" />
     <group ref={object}>
       {(form === 'Knot' || form === 'Ribbon' || form === 'Crystal') && <mesh key={form}>
-        {form === 'Knot' && <torusKnotGeometry args={[0.96, 0.33, 180, 28, 2, 3]} />}
+        {form === 'Knot' && <torusKnotGeometry args={[1.02, 0.255, 180, 28, 2, 3]} />}
         {form === 'Ribbon' && <torusKnotGeometry args={[1.05, 0.13, 220, 18, 3, 5]} />}
         {form === 'Crystal' && <icosahedronGeometry args={[1.52, 0]} />}
-        <meshPhysicalMaterial color={finish === 'Mint' ? '#74e4cb' : '#ae91ff'} metalness={0.46} roughness={0.2} clearcoat={0.85} clearcoatRoughness={0.15} flatShading={form === 'Crystal'} wireframe={wireframe} />
+        <meshPhysicalMaterial color={finish === 'Mint' ? '#a0d9c8' : '#b7a7e9'} metalness={0.52} roughness={0.23} iridescence={0.32} iridescenceIOR={1.3} clearcoat={0.85} clearcoatRoughness={0.15} flatShading={form === 'Crystal'} wireframe={wireframe} />
       </mesh>}
       {form === 'Product' && <group position={[0, -0.15, 0]}>
         <mesh><cylinderGeometry args={[0.56, 0.6, 1.55, 64]} /><meshPhysicalMaterial color={finish === 'Mint' ? '#89d9c7' : '#af9be2'} metalness={0.24} roughness={0.2} clearcoat={1} wireframe={wireframe} /></mesh>
@@ -52,10 +54,10 @@ function Sculpture({ form, finish, wireframe, playing, rotation, scroll }: { for
           {!wireframe && [0, 1, 2].map(line => <mesh key={line} position={[-0.16, 0.22 - line * 0.19, 0.056]}><planeGeometry args={[0.7 - line * 0.1, 0.035]} /><meshBasicMaterial color={index === 0 ? '#173146' : '#879fc5'} /></mesh>)}
         </group>)}
       </group>}
-      <mesh rotation={[0.5, 0.6, 0.3]}><torusGeometry args={[2.08, 0.006, 6, 150]} /><meshBasicMaterial color="#a49aff" transparent opacity={0.48} /></mesh>
+      <mesh rotation={[0.5, 0.6, 0.3]}><torusGeometry args={[2.08, 0.006, 6, 150]} /><meshBasicMaterial color="#a49aff" transparent opacity={0.18} /></mesh>
     </group>
-    {[1.15, 1.65, 2.1].map(radius => <mesh key={radius} position={[0, -1.95, 0]} rotation={[-Math.PI / 2, 0, 0]}><ringGeometry args={[radius, radius + 0.009, 100]} /><meshBasicMaterial color="#799cbf" transparent opacity={0.22} /></mesh>)}
-    <points><bufferGeometry><bufferAttribute attach="attributes-position" count={stars.length / 3} array={stars} itemSize={3} /></bufferGeometry><pointsMaterial size={0.014} color="#a6c5e9" transparent opacity={0.6} /></points>
+    {[1.15, 1.65, 2.1].map(radius => <mesh key={radius} position={[0, -1.95, 0]} rotation={[-Math.PI / 2, 0, 0]}><ringGeometry args={[radius, radius + 0.009, 100]} /><meshBasicMaterial color="#799cbf" transparent opacity={0.1} /></mesh>)}
+    <points><bufferGeometry><bufferAttribute attach="attributes-position" count={stars.length / 3} array={stars} itemSize={3} /></bufferGeometry><pointsMaterial size={0.014} color="#a6c5e9" transparent opacity={0.34} /></points>
   </>;
 }
 
