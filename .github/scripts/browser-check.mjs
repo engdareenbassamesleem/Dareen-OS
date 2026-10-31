@@ -29,7 +29,7 @@ try {
   assert.equal(await page.locator('html').getAttribute('lang'), 'en');
   assert.equal(await page.locator('html').getAttribute('dir'), 'ltr');
   assert.equal(/[\u0600-\u06ff]/.test(await page.locator('body').innerText()), false);
-  await page.getByRole('img', { name: 'Dareen Esleem, AI engineer and software developer' }).evaluate(image => { if (!image.complete || !image.naturalWidth) throw Error('Portrait failed to load'); });
+  await page.getByRole('img', { name: 'Dareen Esleem, 3D design and AI engineer' }).evaluate(image => { if (!image.complete || !image.naturalWidth) throw Error('Portrait failed to load'); });
   assert.equal(await page.locator('.project-card').count(), 4);
   results.push('English-only page, including returning visitors; original portrait loads successfully');
 
@@ -57,15 +57,22 @@ try {
   await page.getByRole('button', { name: 'All projects' }).click();
   results.push('Project filtering, accessible dialogs and real repository links');
 
-  await page.locator('.about-visual').scrollIntoViewIfNeeded();
+  await page.locator('.hero-studio').scrollIntoViewIfNeeded();
   await page.locator('canvas').waitFor();
   await page.locator('.scene-fallback').waitFor({ state: 'hidden' });
   assert.ok(await page.locator('canvas').evaluate(canvas => Boolean(canvas.getContext('webgl2'))));
-  await page.getByRole('button', { name: 'Orbital field', exact: true }).click();
-  assert.equal(await page.getByRole('button', { name: 'Orbital field', exact: true }).getAttribute('aria-pressed'), 'true');
+  await page.getByRole('button', { name: 'Ribbon', exact: true }).click();
+  assert.equal(await page.getByRole('button', { name: 'Ribbon', exact: true }).getAttribute('aria-pressed'), 'true');
   await page.getByRole('button', { name: 'Pause animation', exact: true }).click();
   await page.getByRole('button', { name: 'Rotate scene', exact: true }).click();
-  results.push('Interactive 3D scene and its shape, rotation and pause controls');
+  await page.getByRole('button', { name: 'Crystal', exact: true }).click();
+  await page.getByRole('button', { name: 'Violet material', exact: true }).click();
+  assert.equal(await page.getByRole('button', { name: 'Violet material', exact: true }).getAttribute('aria-pressed'), 'true');
+  await page.getByRole('button', { name: /Wireframe/ }).click();
+  assert.equal(await page.getByRole('button', { name: /Wireframe/ }).getAttribute('aria-pressed'), 'true');
+  await page.getByRole('button', { name: /Wireframe/ }).click();
+  await page.getByRole('button', { name: 'Knot', exact: true }).click();
+  results.push('3D sculpture: three forms, material switches, wireframe, rotation and pause controls');
 
   await page.getByRole('button', { name: 'Copy email address' }).click();
   await page.getByRole('status').filter({ hasText: 'Email copied' }).waitFor();
@@ -102,7 +109,7 @@ try {
     };
   });
   await fallback.goto('http://127.0.0.1:4173/Dareen-OS/', { waitUntil: 'networkidle' });
-  await fallback.locator('.about-visual').scrollIntoViewIfNeeded();
+  await fallback.locator('.hero-studio').scrollIntoViewIfNeeded();
   await fallback.locator('.scene-fallback').waitFor({ state: 'visible' });
   assert.equal(await fallback.locator('.project-card').count(), 4);
   results.push('The portrait, welcome and portfolio remain usable without WebGL');

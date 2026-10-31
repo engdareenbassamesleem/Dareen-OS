@@ -1,12 +1,10 @@
 export type Category = "all" | "ai" | "automation" | "product";
-
 export const profile = {
   "name": "Dareen Esleem",
   "email": "dareen1872001@gmail.com",
   "github": "https://github.com/engdareenbassamesleem",
   "linkedin": "https://www.linkedin.com/in/dareenesleem2001/"
 };
-
 export const copy = {
   "nav": [
     "Work",
@@ -41,7 +39,7 @@ export const copy = {
   "workLabel": "01 / SELECTED WORK",
   "workTitle": "From curiosity",
   "workAccent": "to code.",
-  "workIntro": "A selection of things I’m building, exploring, and learning from. Open the details to see the approach and source code.",
+  "workIntro": "Selected AI and software projects, with the thinking and source code behind them. The interactive sculpture above is a procedural form study created for this portfolio.",
   "filters": {
     "all": "All projects",
     "ai": "AI & retrieval",
@@ -57,17 +55,27 @@ export const copy = {
   "aboutLabel": "02 / THE PERSON BEHIND THE CODE",
   "aboutTitle": "Analytical mind.",
   "aboutAccent": "Creative instinct.",
-  "aboutBody": "My foundation is mathematics. My medium is code. I bring both together to build AI experiences that make information easier to find, workflows easier to understand, and software easier to use.",
-  "aboutSecond": "I’m especially interested in the space where intelligent systems meet real human needs: grounded answers, clear interfaces, and reliable automation.",
+  "aboutBody": "I am Dareen Esleem, a 3D design and AI engineer with a foundation in mathematics. My work connects visual thinking with the logic of intelligent systems: exploring form, shaping interactions, and building useful software.",
+  "aboutSecond": "I am drawn to the intersection of aesthetics and computation. This website is a live example: procedural 3D forms, responsive motion, and an interactive experience built in code. Below are my AI and software projects, with their source repositories.",
   "principle": "Start with the problem. Build with intention.",
   "education": "FOUNDATION",
   "educationValue": "BSc in Mathematics · 2024",
   "focus": "CURRENT FOCUS",
-  "focusValue": "Applied AI & software engineering",
+  "focusValue": "3D design, interactive experiences & applied AI",
   "expertiseLabel": "03 / WHAT I BRING",
   "expertiseTitle": "Built on logic.",
   "expertiseAccent": "Made for people.",
   "expertise": [
+    {
+      "title": "3D design & visual thinking",
+      "body": "Exploring form, composition, materials, light, and motion to shape dimensional visual experiences.",
+      "tags": [
+        "Form",
+        "Materials",
+        "Lighting",
+        "Motion"
+      ]
+    },
     {
       "title": "Applied intelligence",
       "body": "Retrieval, semantic search, and AI assistants designed around evidence and useful answers.",
@@ -79,23 +87,13 @@ export const copy = {
       ]
     },
     {
-      "title": "Connected systems",
-      "body": "Python backends and automated workflows with clear data flows and observable behavior.",
-      "tags": [
-        "Python",
-        "FastAPI",
-        "SQL",
-        "n8n"
-      ]
-    },
-    {
-      "title": "Thoughtful interfaces",
-      "body": "Responsive interfaces that make complex systems feel approachable and understandable.",
+      "title": "Creative engineering",
+      "body": "Bringing visual ideas to life through interactive web experiences, typed interfaces, and practical software systems.",
       "tags": [
         "React",
         "TypeScript",
-        "Next.js",
-        "Firebase"
+        "Three.js",
+        "Python"
       ]
     }
   ],
@@ -110,7 +108,6 @@ export const copy = {
   "footer": "Built with curiosity, mathematics & a little Three.js.",
   "back": "Back to top"
 };
-
 export const projects = [
   {
     "id": "flowmedic",
@@ -180,5 +177,4 @@ export const projects = [
     "scope": "An application prototype for clinic workflows, not a deployed clinical service. The assistant is not a medical diagnosis tool."
   }
 ];
-
 export type Project = (typeof projects)[number];

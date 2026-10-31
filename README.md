@@ -1,6 +1,6 @@
 # Dareen — AI Engineer
 
-An English personal portfolio for Dareen Esleem, built around her identity: a custom DE code monogram, her supplied portrait, and an animated TypeScript introduction that types her name and a welcome message. A Three.js neural sculpture, project case studies, and direct contact links complete the experience.
+An English personal portfolio for Dareen Esleem, 3D design and AI engineer. The homepage contains a live procedural sculpture studio with three forms, two material finishes, wireframe mode, drag rotation, and pause controls. It retains her original portrait, DE monogram, animated code introduction, and existing AI/software projects.
 
 ## Stack
 
@@ -17,7 +17,7 @@ An English personal portfolio for Dareen Esleem, built around her identity: a cu
 - The original portrait is published at `public/dareen-esleem.jpg`. It is displayed with CSS framing, without image retouching.
 - The introduction types once, with pause/resume and replay controls. Reduced-motion visitors immediately see the full text. This is a visual introduction, not executable visitor-supplied code.
 
-- Switch the sculpture between a neural sphere and an orbital field; drag it, rotate with the keyboard-accessible button, or pause animation.
+- Switch between Knot, Ribbon, and Crystal forms, Mint and Violet finishes, or wireframe mode. Drag the sculpture, rotate with its accessible button, or pause animation.
 - Animation starts paused for visitors who prefer reduced motion and stops rendering when the sculpture is offscreen or the tab is hidden.
 - A static orbital illustration replaces the canvas if WebGL is unavailable or its context is lost.
 - Filter projects and open accessible native dialogs with approach, scope, technologies, and source links.
@@ -29,7 +29,7 @@ An English personal portfolio for Dareen Esleem, built around her identity: a cu
 
 Edit `src/content/site.ts` for the profile, projects, and contact links. `src/components/CodeIntro.tsx` contains the introduction. Project descriptions and status are carried over from the original repository; they should be kept in sync with the linked source repositories. Project illustrations are stylized diagrams, not screenshots of deployed applications.
 
-`src/components/NeuralScene.tsx` owns the procedural sculpture. `src/styles.css` defines the visual system. The heavy 3D module is loaded separately from the main page.
+`src/components/StudioScene.tsx` owns the procedural sculpture. `src/styles.css` defines the visual system. The heavy 3D module is loaded separately from the main page.
 
 ## Featured work
 
