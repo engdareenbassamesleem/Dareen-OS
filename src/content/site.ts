@@ -7,6 +7,7 @@ export const profile = {
 };
 export const copy = {
   "nav": [
+    "3D Lab",
     "Work",
     "About",
     "Expertise"
@@ -36,10 +37,10 @@ export const copy = {
     "Human-centered software",
     "Mathematical thinking"
   ],
-  "workLabel": "01 / SELECTED WORK",
+  "workLabel": "02 / REAL AI PROJECTS",
   "workTitle": "From curiosity",
   "workAccent": "to code.",
-  "workIntro": "Selected AI and software projects, with the thinking and source code behind them. The interactive sculpture above is a procedural form study created for this portfolio.",
+  "workIntro": "My personal AI projects, presented separately from the experimental 3D Lab. Open a project to explore its scope and any available source code.",
   "filters": {
     "all": "All projects",
     "ai": "AI & retrieval",
@@ -52,17 +53,17 @@ export const copy = {
   "approach": "The approach",
   "scope": "Current scope",
   "builtWith": "BUILT WITH",
-  "aboutLabel": "02 / THE PERSON BEHIND THE CODE",
+  "aboutLabel": "03 / THE PERSON BEHIND THE WORK",
   "aboutTitle": "Analytical mind.",
   "aboutAccent": "Creative instinct.",
   "aboutBody": "I am Dareen Esleem, a 3D design and AI engineer with a foundation in mathematics. My work connects visual thinking with the logic of intelligent systems: exploring form, shaping interactions, and building useful software.",
-  "aboutSecond": "I am drawn to the intersection of aesthetics and computation. This website is a live example: procedural 3D forms, responsive motion, and an interactive experience built in code. Below are my AI and software projects, with their source repositories.",
+  "aboutSecond": "I am currently building and expanding my interactive 3D web portfolio, exploring product visualization, mouse-responsive objects, scroll-based motion, and immersive landing-page concepts.",
   "principle": "Start with the problem. Build with intention.",
   "education": "FOUNDATION",
   "educationValue": "BSc in Mathematics · 2024",
   "focus": "CURRENT FOCUS",
   "focusValue": "3D design, interactive experiences & applied AI",
-  "expertiseLabel": "03 / WHAT I BRING",
+  "expertiseLabel": "04 / MY PRACTICE",
   "expertiseTitle": "Built on logic.",
   "expertiseAccent": "Made for people.",
   "expertise": [
@@ -70,9 +71,9 @@ export const copy = {
       "title": "3D design & visual thinking",
       "body": "Exploring form, composition, materials, light, and motion to shape dimensional visual experiences.",
       "tags": [
-        "Form",
-        "Materials",
-        "Lighting",
+        "Spline",
+        "Three.js",
+        "Figma",
         "Motion"
       ]
     },
@@ -97,7 +98,7 @@ export const copy = {
       ]
     }
   ],
-  "contactLabel": "04 / NEXT CONNECTION",
+  "contactLabel": "05 / NEXT CONNECTION",
   "contactTitle": "Good things start",
   "contactAccent": "with a conversation.",
   "contactBody": "Have an idea, an opportunity, or an interesting problem? I’d love to hear about it.",
@@ -109,56 +110,6 @@ export const copy = {
   "back": "Back to top"
 };
 export const projects = [
-  {
-    "id": "flowmedic",
-    "title": "FlowMedic AI",
-    "category": "automation",
-    "href": "https://github.com/engdareenbassamesleem/flowmedic-ai",
-    "stack": [
-      "Python",
-      "FastAPI",
-      "Next.js",
-      "Docker"
-    ],
-    "label": "AUTOMATION / OBSERVABILITY",
-    "status": "Active portfolio build",
-    "description": "A clearer picture of automated workflows. Monitoring and AI-assisted incident diagnosis for n8n.",
-    "approach": "Read-only workflow monitoring with durable persistence, deterministic health metrics, an incident pipeline, and a typed dashboard.",
-    "scope": "An active portfolio project exploring workflow observability and safe AI-assisted diagnosis. See the repository for implementation status and limitations."
-  },
-  {
-    "id": "ragsource",
-    "title": "RAGSource",
-    "category": "ai",
-    "href": "https://github.com/engdareenbassamesleem/ragsource",
-    "stack": [
-      "Python",
-      "FastAPI",
-      "FastEmbed",
-      "Gemini"
-    ],
-    "label": "APPLIED AI / RETRIEVAL",
-    "status": "Portfolio MVP",
-    "description": "Answers with a paper trail. A PDF knowledge assistant that keeps every source within reach.",
-    "approach": "PDF ingestion with page-level provenance, semantic retrieval, grounding thresholds, and traceable source markers in generated answers.",
-    "scope": "A portfolio MVP for exploring citation-first retrieval. Grounding checks support source tracing; they do not guarantee answer correctness."
-  },
-  {
-    "id": "sourcedesk",
-    "title": "SourceDesk",
-    "category": "ai",
-    "href": "https://github.com/engdareenbassamesleem/AI-Chatbot-WebApp",
-    "stack": [
-      "Python",
-      "BM25",
-      "JavaScript"
-    ],
-    "label": "SEARCH / INFORMATION RETRIEVAL",
-    "status": "Learning project",
-    "description": "Find the right answer, or say when there isn’t one. A focused experiment in FAQ retrieval.",
-    "approach": "BM25-style lexical ranking returns source-preserving answers, with explicit no-match behavior when the available information does not fit.",
-    "scope": "A compact learning project in information retrieval. It explores lexical search rather than claiming general-purpose conversational intelligence."
-  },
   {
     "id": "dentivo",
     "title": "Dentivo AI",
@@ -175,6 +126,41 @@ export const projects = [
     "description": "A more connected clinic experience. An AI-assisted workflow prototype for patient questions and booking requests.",
     "approach": "A React interface backed by Firebase services, with a Gemini-powered assistant for patient questions and structured booking-request collection.",
     "scope": "An application prototype for clinic workflows, not a deployed clinical service. The assistant is not a medical diagnosis tool."
+  },
+  {
+    "id": "leadengine",
+    "title": "Dareen AI Lead Engine",
+    "category": "automation",
+    "href": null,
+    "stack": [
+      "n8n",
+      "AI / LLMs",
+      "APIs",
+      "Webhooks",
+      "Google Sheets / Database Integrations"
+    ],
+    "label": "AI AUTOMATION PROJECT",
+    "status": "Personal project",
+    "description": "An AI-powered n8n system for capturing, analyzing, qualifying, and scoring incoming leads before triggering an automated business workflow.",
+    "approach": "Lead Capture → Data Processing → AI Analysis → Lead Qualification → Lead Scoring → Automated Action. AI analyzes and classifies incoming information, assigns qualification or priority details, and supports the appropriate automated action.",
+    "scope": "A personal AI automation project. There is currently no public repository or live demo URL for this project."
+  },
+  {
+    "id": "flowmedic",
+    "title": "FlowMedic AI",
+    "category": "automation",
+    "href": "https://github.com/engdareenbassamesleem/flowmedic-ai",
+    "stack": [
+      "Python",
+      "FastAPI",
+      "Next.js",
+      "Docker"
+    ],
+    "label": "AUTOMATION / OBSERVABILITY",
+    "status": "Active portfolio build",
+    "description": "A clearer picture of automated workflows. Monitoring and AI-assisted incident diagnosis for n8n.",
+    "approach": "Read-only workflow monitoring with durable persistence, deterministic health metrics, an incident pipeline, and a typed dashboard.",
+    "scope": "An active portfolio project exploring workflow observability and safe AI-assisted diagnosis. See the repository for implementation status and limitations."
   }
 ];
 export type Project = (typeof projects)[number];

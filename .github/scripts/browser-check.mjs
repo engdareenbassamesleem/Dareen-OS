@@ -30,7 +30,7 @@ try {
   assert.equal(await page.locator('html').getAttribute('dir'), 'ltr');
   assert.equal(/[\u0600-\u06ff]/.test(await page.locator('body').innerText()), false);
   await page.getByRole('img', { name: 'Dareen Esleem, 3D design and AI engineer' }).evaluate(image => { if (!image.complete || !image.naturalWidth) throw Error('Portrait failed to load'); });
-  assert.equal(await page.locator('.project-card').count(), 4);
+  assert.equal(await page.locator('.project-card').count(), 3);
   results.push('English-only page, including returning visitors; original portrait loads successfully');
 
   await page.getByRole('button', { name: 'Replay introduction' }).click();
@@ -47,31 +47,48 @@ try {
   await page.locator('.hero').screenshot({ path: fileURLToPath(new URL('dareen-home.png', output)) });
   results.push('Animated code introduction types the name and greeting; pause, resume and replay work');
 
-  await page.getByRole('button', { name: 'AI & retrieval', exact: true }).click();
-  assert.equal(await page.locator('.project-card').count(), 2);
-  await page.getByRole('button', { name: 'Explore project: RAGSource', exact: true }).click();
+  await page.getByRole('button', { name: 'Product', exact: true }).click();
+  assert.equal(await page.locator('.project-card').count(), 1);
+  await page.getByRole('button', { name: 'Explore project: Dentivo AI', exact: true }).click();
   await page.getByRole('dialog').waitFor({ state: 'visible' });
-  assert.equal(await page.getByRole('dialog').getByRole('link').getAttribute('href'), 'https://github.com/engdareenbassamesleem/ragsource');
+  assert.equal(await page.getByRole('dialog').getByRole('link').getAttribute('href'), 'https://github.com/engdareenbassamesleem/dentivo-ai');
   await page.keyboard.press('Escape');
   await page.locator('dialog').waitFor({ state: 'detached' });
   await page.getByRole('button', { name: 'All projects' }).click();
   results.push('Project filtering, accessible dialogs and real repository links');
+  await page.getByRole('button', { name: 'Explore Workflow: Dareen AI Lead Engine', exact: true }).click();
+  await page.getByRole('dialog').waitFor({ state: 'visible' });
+  await page.getByRole('dialog').getByRole('heading', { name: 'Workflow Visualization', exact: true }).waitFor();
+  assert.equal(await page.getByRole('dialog').locator('.workflow-visualization li').count(), 6);
+  assert.equal(await page.getByRole('dialog').getByRole('link').count(), 0);
+  await page.keyboard.press('Escape');
+  await page.locator('dialog').waitFor({ state: 'detached' });
+  await page.getByRole('heading', { name: /3D Lab.*Experimental & Concept Work/ }).waitFor();
+  await page.locator('.lab-showcase').getByRole('button', { name: 'Product', exact: true }).waitFor();
+  await page.getByRole('button', { name: /02.*Generative form/ }).click();
+  await page.locator('.lab-showcase').getByRole('button', { name: 'Knot', exact: true }).waitFor();
+  await page.getByRole('button', { name: /03.*Spatial interface/ }).click();
+  await page.locator('.lab-showcase').getByRole('button', { name: 'Interface', exact: true }).waitFor();
+  await page.getByRole('button', { name: /01.*Product visualization/ }).click();
+  results.push('Real AI projects are separate from the original 3D lab; Lead Engine has a six-step workflow and no invented links');
 
-  await page.locator('.hero-studio').scrollIntoViewIfNeeded();
-  await page.locator('canvas').waitFor();
-  await page.locator('.scene-fallback').waitFor({ state: 'hidden' });
-  assert.ok(await page.locator('canvas').evaluate(canvas => Boolean(canvas.getContext('webgl2'))));
-  await page.getByRole('button', { name: 'Ribbon', exact: true }).click();
-  assert.equal(await page.getByRole('button', { name: 'Ribbon', exact: true }).getAttribute('aria-pressed'), 'true');
-  await page.getByRole('button', { name: 'Pause animation', exact: true }).click();
-  await page.getByRole('button', { name: 'Rotate scene', exact: true }).click();
-  await page.getByRole('button', { name: 'Crystal', exact: true }).click();
-  await page.getByRole('button', { name: 'Violet material', exact: true }).click();
-  assert.equal(await page.getByRole('button', { name: 'Violet material', exact: true }).getAttribute('aria-pressed'), 'true');
-  await page.getByRole('button', { name: /Wireframe/ }).click();
-  assert.equal(await page.getByRole('button', { name: /Wireframe/ }).getAttribute('aria-pressed'), 'true');
-  await page.getByRole('button', { name: /Wireframe/ }).click();
-  await page.getByRole('button', { name: 'Knot', exact: true }).click();
+
+  const studio = page.locator('.hero-studio');
+  await studio.scrollIntoViewIfNeeded();
+  await studio.locator('canvas').waitFor();
+  await studio.locator('.scene-fallback').waitFor({ state: 'hidden' });
+  assert.ok(await studio.locator('canvas').evaluate(canvas => Boolean(canvas.getContext('webgl2'))));
+  await studio.getByRole('button', { name: 'Ribbon', exact: true }).click();
+  assert.equal(await studio.getByRole('button', { name: 'Ribbon', exact: true }).getAttribute('aria-pressed'), 'true');
+  await studio.getByRole('button', { name: 'Pause animation', exact: true }).click();
+  await studio.getByRole('button', { name: 'Rotate scene', exact: true }).click();
+  await studio.getByRole('button', { name: 'Crystal', exact: true }).click();
+  await studio.getByRole('button', { name: 'Violet material', exact: true }).click();
+  assert.equal(await studio.getByRole('button', { name: 'Violet material', exact: true }).getAttribute('aria-pressed'), 'true');
+  await studio.getByRole('button', { name: /Wireframe/ }).click();
+  assert.equal(await studio.getByRole('button', { name: /Wireframe/ }).getAttribute('aria-pressed'), 'true');
+  await studio.getByRole('button', { name: /Wireframe/ }).click();
+  await studio.getByRole('button', { name: 'Knot', exact: true }).click();
   results.push('3D sculpture: three forms, material switches, wireframe, rotation and pause controls');
 
   await page.getByRole('button', { name: 'Copy email address' }).click();
@@ -97,7 +114,7 @@ try {
   await mobile.screenshot({ path: fileURLToPath(new URL('dareen-identity-mobile.png', output)), fullPage: true });
   results.push('Mobile menu and responsive layouts at 320, 390, 768, 1024 and 1440 pixels');
   assert.equal(await mobile.locator('.code-editor').getAttribute('data-typing-complete'), 'true');
-  await mobile.getByRole('button', { name: 'Play animation', exact: true }).waitFor({ state: 'attached' });
+  await mobile.locator('.hero-studio').getByRole('button', { name: 'Play animation', exact: true }).waitFor({ state: 'attached' });
   results.push('Reduced motion displays the full greeting immediately and pauses the 3D scene');
 
   const fallback = await browser.newPage({ reducedMotion: 'reduce' });
@@ -110,8 +127,8 @@ try {
   });
   await fallback.goto('http://127.0.0.1:4173/Dareen-OS/', { waitUntil: 'networkidle' });
   await fallback.locator('.hero-studio').scrollIntoViewIfNeeded();
-  await fallback.locator('.scene-fallback').waitFor({ state: 'visible' });
-  assert.equal(await fallback.locator('.project-card').count(), 4);
+  await fallback.locator('.hero-studio .scene-fallback').waitFor({ state: 'visible' });
+  assert.equal(await fallback.locator('.project-card').count(), 3);
   results.push('The portrait, welcome and portfolio remain usable without WebGL');
   assert.deepEqual(errors, []);
   await writeFile(new URL('verification.json', output), JSON.stringify({ results, errors }, null, 2));

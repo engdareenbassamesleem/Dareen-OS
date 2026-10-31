@@ -2,6 +2,7 @@ export function ProjectArt({ kind }: { kind: string }) {
   return (
     <div className={`project-art art-${kind}`} aria-hidden="true">
       <div className="art-grid" />
+      {kind === 'leadengine' && <div className="lead-diagram" dir="ltr"><span className="lead-caption">Workflow Visualization</span><div className="lead-flow">{['Lead Capture', 'Data Processing', 'AI Analysis', 'Qualification', 'Lead Scoring', 'Automated Action'].map((step, i) => <div key={step}><b>{String(i + 1).padStart(2, '0')}</b><span>{step}</span></div>)}</div><p>DAREEN / AI AUTOMATION</p></div>}
       {kind === 'flowmedic' && <div className="flow-diagram" dir="ltr">
         <div className="flow-node"><span className="node-glyph">⌁</span><small>WORKFLOW</small></div>
         <div className="flow-line"><i /></div>
@@ -27,7 +28,7 @@ export function ProjectArt({ kind }: { kind: string }) {
           <div className="clinic-content"><div className="clinic-icon">✦</div><span className="clinic-greeting">A little more human.</span><div className="chat-bubble"><span /><span /></div><div className="chat-bubble reply"><span /></div></div>
         </div>
       </div>}
-      <span className="art-corner">D / EXPERIMENTS</span>
+      <span className="art-corner">PROJECT VISUALIZATION</span>
     </div>
   );
 }

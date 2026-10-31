@@ -62,3 +62,11 @@ If Pages has not yet been enabled for the repository, set **Settings â†’ Pages â
 ## Notes
 
 This portfolio intentionally links claims to public project evidence and avoids invented client metrics or production claims. Individual repositories document their current scope and limitations.
+
+## 3D Lab and project boundaries
+
+The 3D Lab is labelled **Experimental & Concept Work**. Its procedural form, unbranded product, and spatial-interface studies are original website experiments, not client commissions. Pointer movement, dragging, and scrolling influence the scenes; reduced-motion and pause settings disable automatic motion.
+
+Real AI projects are Dentivo AI, FlowMedic AI, and Dareen AI Lead Engine. The latter is an n8n / AI automation project described by Dareen; it has an illustrative six-step Workflow Visualization and an Explore Workflow CTA, with no repository or live-demo link.
+
+The creative toolkit is user supplied: Spline, Three.js, React, JavaScript, HTML5 / CSS3, Figma, and AI-assisted web development tools. The site experiments themselves use Three.js and React.
