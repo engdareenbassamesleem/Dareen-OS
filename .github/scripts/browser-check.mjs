@@ -47,7 +47,7 @@ try {
   await page.locator('.hero').screenshot({ path: fileURLToPath(new URL('dareen-home.png', output)) });
   results.push('Animated code introduction types the name and greeting; pause, resume and replay work');
 
-  await page.getByRole('button', { name: 'Product', exact: true }).click();
+  await page.locator('.project-filters').getByRole('button', { name: 'AI applications', exact: true }).click();
   assert.equal(await page.locator('.project-card').count(), 1);
   await page.getByRole('button', { name: 'Explore project: Dentivo AI', exact: true }).click();
   await page.getByRole('dialog').waitFor({ state: 'visible' });

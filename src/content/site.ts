@@ -43,9 +43,8 @@ export const copy = {
   "workIntro": "My personal AI projects, presented separately from the experimental 3D Lab. Open a project to explore its scope and any available source code.",
   "filters": {
     "all": "All projects",
-    "ai": "AI & retrieval",
-    "automation": "Automation",
-    "product": "Product"
+    "automation": "AI automation",
+    "product": "AI applications"
   },
   "details": "Explore project",
   "source": "View source on GitHub",
