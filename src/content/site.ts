@@ -1,4 +1,4 @@
-export type Category = "all" | "ai" | "automation" | "product";
+export type Category = keyof typeof copy.filters;
 export const profile = {
   "name": "Dareen Esleem",
   "email": "dareen1872001@gmail.com",
